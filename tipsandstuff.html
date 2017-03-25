@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tips</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            h2 {
+                color: rgb(19, 41, 11);
+                font-family: sans-serif;
+            }
+
+            h4 {
+              font-family: sans-serif;
+            }
+
+            body {
+                background-color: rgb(234, 250, 230);
+            }
+            ms {
+                font-family: monospace;
+                color: rgb(134, 45, 26);
+            }
+
+        </style>
+
+    </head>
+    <body>
+    <h2>Tips</h2>
+
+    <h4>Connecting Robot phone to Android Studio on Windows</h4>
+    <p>Connect phone via USB to the computer.</p>
+    <p>Type <ms>adb tcpip 5555</ms> in Android Studio Terminal.</p>
+    <p>Disconnect the phone.</p>
+    <p>Connect computer to the direct WiFi network of the Robot phone.
+      The network has robot name in its name. The passphrase and IP address
+      of the robot phone on this network can be found in “About” section
+      of the FTC app.</p>
+    <p>Type <ms>adb 192.168.49.1</ms> in Android Studio Terminal, where <ms>192.168.49.1</ms>
+      is the default IP address of the Robot phone from the previous step.</p>
+
+      <h4>Copying Robot configuration file to a different phone</h4>
+      <p>Robot configuration XML files are stored in <ms>/sdcard/FIRST</ms>
+        directory on the Robot phone.</p>
+        With the first phone connected to the computer, go to Android
+        Studio Terminal. Type <ms>adb pull /sdcard/FIRST/yourConfigName.xml</ms>
+        where <ms>yourConfigName</ms> is the configuration name you want to copy.
+        This will pull the configuration file to the current directory on
+        your computer.</p>
+      <p>Disconnect the first phone from the computer. (It it is connected
+        wirelessly, use <ms>adb disconnect</ms>.)</p>
+      <p>With the second phone connected to the computer, type <ms>adb push
+        yourConfigName.xml /sdcard/FIRST/yourConfigName.xml</ms>. This will
+        push the configuration file from the current directory to the right
+        place on the second Robot phone.</p>
+      <p>Note: You can use the same approach to modify serial numbers in the
+        configuration file after a module was replaced.</p>
+
+    </body>
+</html>
