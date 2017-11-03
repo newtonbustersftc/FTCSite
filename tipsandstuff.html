@@ -37,7 +37,7 @@
       The network has robot name in its name. The passphrase and IP address
       of the robot phone on this network can be found in “About” section
       of the FTC app.</p>
-    <p>Type <ms>adb 192.168.49.1</ms> in Android Studio Terminal, where <ms>192.168.49.1</ms>
+    <p>Type <ms>adb connect 192.168.49.1</ms> in Android Studio Terminal, where <ms>192.168.49.1</ms>
       is the default IP address of the Robot phone from the previous step.</p>
 
       <h4>Copying Robot configuration file to a different phone</h4>
@@ -57,5 +57,42 @@
       <p>Note: You can use the same approach to modify serial numbers in the
         configuration file after a module was replaced.</p>
 
+    <h4>Steps to merge in SDK changes</h4>
+    <p>Make sure upstream repository is set:</p>
+    <pre>
+    git remote -v
+    origin  https://github.com/Aero-Paitil/ftc_app.git (fetch)
+    origin  https://github.com/Aero-Paitil/ftc_app.git (push)
+    upstream        https://github.com/ftctechnh/ftc_app.git (fetch)
+    upstream        https://github.com/ftctechnh/ftc_app.git (push)
+    </pre>
+    <p>If not, set the upstream repository:</p>
+    <pre>
+    git remote add upstream https://github.com/ftctechnh/ftc_app.git
+    </pre>
+    
+    <p>Fetch the upstream repository changes:</p>
+    <pre>
+    git fetch upstream
+    </pre>
+    <p>Now upstream/master is a local branch.</p>
+
+    <p>Fetch current repository changes:</p>
+    <pre>
+    git fetch origin
+    </pre>
+    <p>Make sure you are in master branch:</p>
+    <pre>
+    git checkout master
+    </pre>
+    
+    <p>Try automatic merge:</p>
+    <pre>
+    git merge upstream/master 
+    </pre>
+    <p>If automatic merge fails (which is likely), stop the merge with</p>
+    <pre>
+    git merge --abort
+    </pre>
     </body>
 </html>
